@@ -3,12 +3,8 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.HashSet;
 
-import java.util.LinkedList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
-public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> implements Map61B<K, V> {
+public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> implements Map61B<K ,V> {
     private int size, tableSize;
     private double factor;
     private LinkedList<K>[] keyArray;
@@ -34,7 +30,6 @@ public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> impleme
         this(16, 0.75);  // set default
     }
 
-    @Override
     public boolean containsKey(K key) {
         int hashNum = hash(key);
         if (keyArray[hashNum] == null) {
@@ -43,7 +38,7 @@ public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> impleme
         return keyArray[hashNum].contains(key);
     }
 
-    @Override
+
     public void put(K key, V value) {
         int hashNum = hash(key);
         if (!containsKey(key)) {
@@ -66,7 +61,7 @@ public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> impleme
         }
     }
 
-    @Override
+
     public V get(K key) {
         if (!containsKey(key)) {
             return null;
@@ -76,19 +71,17 @@ public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> impleme
         }
     }
 
-    @Override
+
     public void clear() {
         size = 0;
         keyArray = new LinkedList[keyArray.length];
         valArray = new LinkedList[valArray.length];
     }
 
-    @Override
     public int size() {
         return size;
     }
 
-    @Override
     public Set<K> keySet() {
         for (int i = 0; i < keyArray.length; i++) {
             if (keyArray[i] != null) {
@@ -102,7 +95,8 @@ public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> impleme
         return keySet;
     }
 
-    @Override
+
+
     public Iterator<K> iterator() {
         return new hashMapIterator();
     }
@@ -111,12 +105,12 @@ public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> impleme
 
         int i = 0;
 
-        @Override
+
         public boolean hasNext() {
             return i < keySet.size();
         }
 
-        @Override
+
         public K next() {
             K[] keyArray = (K[]) keySet.toArray();
             K returnKey = keyArray[i];
@@ -125,7 +119,7 @@ public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> impleme
         }
     }
 
-    @Override
+
     public V remove(K key) {
         V returnVal = get(key);
         if (returnVal == null) {
@@ -138,7 +132,6 @@ public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> impleme
     }
 
 
-    @Override
     public V remove(K key, V val) {
         V returnVal = get(key);
         if (returnVal == val) {
