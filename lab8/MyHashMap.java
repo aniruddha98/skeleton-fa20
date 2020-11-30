@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 
-public class MyHashMap<K extends Comparable<K>, V extends Comparable<V>> implements Map61B<K ,V> {
+public class MyHashMap<K, V> implements Map61B<K ,V> {
     private int size, tableSize;
     private double factor;
     private LinkedList<K>[] keyArray;
